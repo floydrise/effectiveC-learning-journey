@@ -1,0 +1,6 @@
+BasedOnStyle: Linux
+IndentWidth: 8
+TabWidth: 8
+UseTab: Always
+BreakBeforeBraces: Linux
+AllowAllArgumentsOnNextLine: false
