@@ -14,9 +14,10 @@ int main(void) {
   char str[] = "This is the text I want to write into the txt file named "
                "new_file.txt :)";
 
-  size_t ret_val = fwrite(str, sizeof(char), strlen(str), fptr);
+  size_t str_len = strlen(str);
+  size_t ret_val = fwrite(str, sizeof(char), str_len, fptr);
 
-  if (ret_val < strlen(str)) {
+  if (ret_val < str_len) {
     perror("fwrite");
     fclose(fptr);
     return EXIT_FAILURE;
