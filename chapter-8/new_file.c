@@ -2,11 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 int main(void) {
+
   FILE *fptr;
   fptr = fopen("new_file.txt", "w");
   if (fptr == NULL) {
-    printf("File cannot be created!");
+    perror("fopen");
     return EXIT_FAILURE;
   }
   char str[] = "This is the text I want to write into the txt file named "
@@ -14,10 +16,18 @@ int main(void) {
 
   size_t ret_val = fwrite(str, sizeof(char), strlen(str), fptr);
 
-  if (ret_val == strlen(str)) {
-    printf("File successfuly created and filled");
+  if (ret_val < strlen(str)) {
+    perror("fwrite");
+    fclose(fptr);
+    return EXIT_FAILURE;
   }
 
-  fclose(fptr);
+  printf("File successfuly created and filled");
+
+  if (fclose(fptr) == EOF) {
+    perror("fclose");
+    return EXIT_FAILURE;
+  }
+
   return EXIT_SUCCESS;
 }
