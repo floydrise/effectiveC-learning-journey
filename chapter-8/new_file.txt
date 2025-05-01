@@ -1,0 +1,1 @@
+This is the text I want to write into the txt file named new_file.txt :)
