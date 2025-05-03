@@ -11,7 +11,7 @@ int main(void) {
   }
 
   int n = fscanf(fptr, "%98[^\n]", str);
-  
+
   if (n == 1) {
     printf("%s\n", str);
   } else if (ferror(fptr)) {
